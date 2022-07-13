@@ -1,4 +1,3 @@
-# Prepare for test
 group "deploy"
 
 user "deploy" do
@@ -17,11 +16,5 @@ when "debian", "ubuntu"
     package name
   end
 end
-
-# Install to system
-include_recipe "rust::system"
-
-# Install to user home
-node[:rust][:user] = "deploy"
 
 include_recipe "rust::user"

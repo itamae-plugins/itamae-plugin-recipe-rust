@@ -30,6 +30,9 @@ jobs:
           # - amazonlinux:2
           # - ubuntu:focal
           - ubuntu:jammy
+        test_task:
+          - test:system
+          - test:user
 
     steps:
       - uses: actions/checkout@v2
@@ -57,16 +60,17 @@ jobs:
           bundle update --retry 3
 
       - name: Run test
-        run: bundle exec rake test
+        run: bundle exec rake ${TEST_TASK}
         env:
           SOURCE_IMAGE: ${{ matrix.image }}
+          TEST_TASK: ${{ matrix.test_task }}
 
       - name: Slack Notification (not success)
         uses: lazy-actions/slatify@master
         if: "! success()"
         continue-on-error: true
         with:
-          job_name: ${{ format('*build* ({0}, {1})', matrix.ruby, matrix.image) }}
+          job_name: ${{ format('*build* ({0}, {1}, {2})', matrix.ruby, matrix.image, matrix.test_task) }}
           type: ${{ job.status }}
           icon_emoji: ":octocat:"
           url: ${{ secrets.SLACK_WEBHOOK }}

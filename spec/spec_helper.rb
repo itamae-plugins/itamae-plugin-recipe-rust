@@ -21,7 +21,7 @@ set :docker_container, ENV['DOCKER_CONTAINER']
 def node
   return @node if @node
 
-  hash = YAML.load_file("#{__dir__}/recipes/node.yml")
+  hash = YAML.load_file(ENV["NODE_YAML"])
 
   @node = Itamae::Node.new(hash, Specinfra.backend)
 end
