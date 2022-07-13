@@ -5,7 +5,7 @@ describe file("#{node["rust"]["cargo_home"]}/bin/rustc") do
 end
 
 describe command("#{node["rust"]["cargo_home"]}/bin/rustc --version") do
-  its(:stdout) { should include node["rust"]["version"] }
+  its(:stdout) { should_not be_empty }
   its(:stderr) { should be_empty }
   its(:exit_status) { should eq 0 }
 end

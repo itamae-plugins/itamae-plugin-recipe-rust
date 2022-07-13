@@ -1,3 +1,2 @@
 rust:
-  version: 1.58.1
   cargo_home: /usr/local/cargo
