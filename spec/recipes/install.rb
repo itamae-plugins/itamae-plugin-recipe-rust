@@ -1,3 +1,4 @@
+# Prepare for test
 group "deploy"
 
 user "deploy" do
@@ -6,4 +7,18 @@ user "deploy" do
   create_home true
 end
 
-# include_recipe "rust::install"
+case node[:platform]
+when "debian", "ubuntu"
+  execute "apt-get update"
+
+  [
+    "sudo"
+  ].each do |name|
+    package name
+  end
+end
+
+# Install to user home
+node[:rust][:user] = "deploy"
+
+include_recipe "rust::user"
