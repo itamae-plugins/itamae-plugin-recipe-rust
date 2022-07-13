@@ -1,15 +1,27 @@
-# frozen_string_literal: true
+require "serverspec"
+require "docker"
+require "yaml"
+require "itamae"
 
-require "itamae/plugin/recipe/rust"
+set :backend, :docker
 
-RSpec.configure do |config|
-  # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = ".rspec_status"
+set :docker_image, ENV['TEST_IMAGE']
+set :docker_container, ENV['DOCKER_CONTAINER']
 
-  # Disable RSpec exposing methods globally on `Module` and `main`
-  config.disable_monkey_patching!
+# Disable sudo
+# set :disable_sudo, true
 
-  config.expect_with :rspec do |c|
-    c.syntax = :expect
-  end
+
+# Set environment variables
+# set :env, :LANG => 'C', :LC_MESSAGES => 'C'
+
+# Set PATH
+# set :path, '/sbin:/usr/local/sbin:$PATH'
+
+def node
+  return @node if @node
+
+  hash = YAML.load_file("#{__dir__}/recipes/node.yml")
+
+  @node = Itamae::Node.new(hash, Specinfra.backend)
 end
