@@ -18,6 +18,9 @@ when "debian", "ubuntu"
   end
 end
 
+# Install to system
+include_recipe "rust::system"
+
 # Install to user home
 node[:rust][:user] = "deploy"
 

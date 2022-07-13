@@ -6,10 +6,11 @@
   package name
 end
 
+rust_env = "CARGO_HOME=#{node[:rust][:cargo_home]}"
 rustc  = "#{node[:rust][:cargo_home]}/bin/rustc"
 rustup = "#{node[:rust][:cargo_home]}/bin/rustup"
 
-execute "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y" do
+execute "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | #{rust_env} sh -s -- -y" do
   not_if "#{rustc} --version"
 
   if node[:rust][:user]
@@ -17,8 +18,8 @@ execute "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   end
 end
 
-install_command = "#{rustup} install --profile minimal"
-check_command   = "#{rustc} --version"
+install_command = "#{rust_env} #{rustup} install --profile minimal"
+check_command   = "#{rust_env} #{rustc} --version"
 
 if node[:rust][:version]
   install_command << " #{node[:rust][:version]}"
@@ -34,8 +35,8 @@ execute install_command do
 end
 
 if node[:rust][:version]
-  execute "#{rustup} default #{node[:rust][:version]}" do
-    not_if "#{rustc} --version | grep #{node[:rust][:version]}"
+  execute "#{rust_env} #{rustup} default #{node[:rust][:version]}" do
+    not_if "#{rust_env} #{rustc} --version | grep #{node[:rust][:version]}"
 
     if node[:rust][:user]
       user node[:rust][:user]
