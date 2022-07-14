@@ -5,12 +5,14 @@ node.reverse_merge!(
 )
 
 unless node[:rust][:cargo_home]
-  case node[:platform]
-  when "osx", "darwin"
-    user_dir = "/Users"
-  else
-    user_dir = "/home"
-  end
+  user_dir =
+    case node[:platform]
+    when "osx", "darwin"
+      "/Users"
+    else
+      "/home"
+    end
+
   node[:rust][:cargo_home] = File.join(user_dir, node[:rust][:user], ".cargo")
 end
 

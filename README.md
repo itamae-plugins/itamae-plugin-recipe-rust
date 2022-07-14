@@ -52,7 +52,7 @@ export PATH="${CARGO_HOME}/bin:${PATH}"
 ```
 
 ### Installation for a user
-Install Rust to `~/#{node[:rust][:user]}/.cargo`
+Install Rust to `~/.cargo`
 
 #### Recipe
 ```ruby
@@ -68,6 +68,9 @@ rust:
   # User to be installed, optional (default: ENV["USER"])
   user: deploy
 
+  # Rust install dir, optional (default: "/home/#{node[:rust][:user]}/.cargo" or "/Users/#{node[:rust][:user]}/.cargo" (MacOS))
+  # cargo_home: /home/deploy/.cargo
+
   # Version of Rust to install, optional (default: latest)
   # version: 1.58.1
 
@@ -80,7 +83,7 @@ This plugin can be used for [mitamae](https://github.com/itamae-kitchen/mitamae)
 
 ```ruby
 node.reverse_merge!(
-  rbenv: {
+  rust: {
     user: "deploy",
     version: "1.58.1",
   }
