@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["sue445"]
   spec.email = ["sue445@sue445.net"]
 
-  spec.summary = "Itamae plugin to install rust"
-  spec.description = "Itamae plugin to install rust"
+  spec.summary = "Itamae plugin to install Rust"
+  spec.description = "Itamae plugin to install Rust"
   spec.homepage = "https://github.com/itamae-plugins/itamae-plugin-recipe-rust"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.3.0"
