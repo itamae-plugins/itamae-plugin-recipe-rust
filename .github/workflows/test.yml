@@ -9,9 +9,8 @@ on:
       - opened
       - synchronize
       - reopened
-  # TODO: Enable after
-  # schedule:
-  #   - cron: "0 10 * * 5" # JST 19:00 (Fri)
+  schedule:
+    - cron: "0 10 * * 5" # JST 19:00 (Fri)
 
 jobs:
   test:
