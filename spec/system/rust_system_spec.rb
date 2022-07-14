@@ -2,6 +2,7 @@ describe file("#{node["rust"]["cargo_home"]}/bin/rustc") do
   it { should be_file }
   it { should exist }
   it { should be_executable }
+  it { should be_owned_by "root" }
 end
 
 describe command("#{node["rust"]["cargo_home"]}/bin/rustc --version") do
