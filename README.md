@@ -1,6 +1,7 @@
 # Itamae::Plugin::Recipe::Rust
 [Itamae](https://github.com/itamae-kitchen/itamae) plugin to install [Rust](https://www.rust-lang.org/)
 
+[![Gem Version](https://badge.fury.io/rb/itamae-plugin-recipe-rust.svg)](https://badge.fury.io/rb/itamae-plugin-recipe-rust)
 [![test](https://github.com/itamae-plugins/itamae-plugin-recipe-rust/actions/workflows/test.yml/badge.svg)](https://github.com/itamae-plugins/itamae-plugin-recipe-rust/actions/workflows/test.yml)
 
 ## Installation
