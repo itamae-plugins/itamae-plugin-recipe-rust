@@ -1,20 +1,8 @@
-group "deploy"
+include_recipe "../../setup"
 
-user "deploy" do
-  gid "deploy"
+user node["rust"]["user"] do
   shell "/bin/bash"
   create_home true
-end
-
-case node[:platform]
-when "debian", "ubuntu"
-  execute "apt-get update"
-
-  [
-    "sudo"
-  ].each do |name|
-    package name
-  end
 end
 
 include_recipe "rust::user"
