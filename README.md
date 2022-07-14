@@ -38,6 +38,9 @@ rust:
 
   # Version of Rust to install, optional (default: latest)
   # version: 1.58.1
+
+  # Passed to `rustup install`, optional (This is used to install a specific version of Rust)
+  # rustup_install_option: "--profile minimal"
 ```
 
 #### .bashrc
@@ -67,6 +70,9 @@ rust:
 
   # Version of Rust to install, optional (default: latest)
   # version: 1.58.1
+
+  # Passed to `rustup install`, optional (This is used to install a specific version of Rust)
+  # rustup_install_option: "--profile minimal"
 ```
 
 ## mitamae

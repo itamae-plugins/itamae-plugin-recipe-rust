@@ -19,7 +19,13 @@ execute "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | #{rust_env}
 end
 
 if node[:rust][:version]
-  execute "#{rustup} install --profile minimal #{node[:rust][:version]}" do
+  rustup_install = "#{rustup} install #{node[:rust][:version]}"
+
+  if node[:rust][:rustup_install_option]
+    rustup_install << " #{node[:rust][:rustup_install_option]}"
+  end
+
+  execute rustup_install do
     not_if "#{rustc} --version | grep #{node[:rust][:version]}"
 
     if node[:rust][:user]
