@@ -1,6 +1,8 @@
 # Itamae::Plugin::Recipe::Rust
 [Itamae](https://github.com/itamae-kitchen/itamae) plugin to install [Rust](https://www.rust-lang.org/)
 
+[![test](https://github.com/itamae-plugins/itamae-plugin-recipe-rust/actions/workflows/test.yml/badge.svg)](https://github.com/itamae-plugins/itamae-plugin-recipe-rust/actions/workflows/test.yml)
+
 ## Installation
 
 Add this line to your application's Gemfile:
