@@ -23,11 +23,10 @@ jobs:
         ruby:
           - 2.3
         image:
-          # TODO: Enable after
-          # - debian:buster
-          # - debian:bullseye
-          # - amazonlinux:2
-          # - ubuntu:focal
+          - debian:buster
+          - debian:bullseye
+          - amazonlinux:2
+          - ubuntu:focal
           - ubuntu:jammy
         test_task:
           - test:system
