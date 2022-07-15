@@ -3,7 +3,6 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 
-ENV["TEST_IMAGE"] = "itamae-plugin:latest"
 ENV["SOURCE_IMAGE"] ||= "ubuntu:jammy"
 
 targets = %i(system user)
