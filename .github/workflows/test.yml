@@ -23,6 +23,7 @@ jobs:
         image:
           - debian:buster
           - debian:bullseye
+          - debian:bookworm
           - amazonlinux:2
           - ubuntu:focal
           - ubuntu:jammy
